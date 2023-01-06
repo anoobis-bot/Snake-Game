@@ -5,6 +5,11 @@ SECTION_PIXEL_SIZE = 20
 # Number of starting sections the snake has
 STARTING_NUM_SECTIONS = 3
 
+EAST_HEAD = 0
+NORTH_HEAD = 90
+WEST_HEAD = 180
+SOUTH_HEAD = 270
+
 
 def create_section():
     new_section = Turtle(shape="square")
@@ -29,6 +34,7 @@ class Snake:
             curr_section.backward(x_offset)
 
             self.snake_body.append(curr_section)
+        self.snake_head = self.snake_body[0]
 
     def add_section(self):
         new_section = create_section()
@@ -41,4 +47,20 @@ class Snake:
             next_section = self.snake_body[section_index - 1]
             self.snake_body[section_index].goto(x=next_section.xcor(), y=next_section.ycor())
 
-        self.snake_body[0].forward(SECTION_PIXEL_SIZE)
+        self.snake_head.forward(SECTION_PIXEL_SIZE)
+
+    def up_direction(self):
+        if self.snake_head.heading() != SOUTH_HEAD:
+            self.snake_head.setheading(NORTH_HEAD)
+
+    def down_direction(self):
+        if self.snake_head.heading() != NORTH_HEAD:
+            self.snake_head.setheading(SOUTH_HEAD)
+
+    def left_direction(self):
+        if self.snake_head.heading() != EAST_HEAD:
+            self.snake_head.setheading(WEST_HEAD)
+
+    def right_direction(self):
+        if self.snake_head.heading() != WEST_HEAD:
+            self.snake_head.setheading(EAST_HEAD)

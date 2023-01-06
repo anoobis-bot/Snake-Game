@@ -11,7 +11,7 @@ screen.bgcolor("black")
 screen.title("Snake Game")
 screen.tracer(0)
 
-SNAKE_SPEED = 0.5
+REFRESH_SPEED = 0.1
 
 
 def main():
@@ -19,8 +19,14 @@ def main():
     snake = Snake()
     screen.update()
 
+    screen.listen()
+    screen.onkeypress(key="Up", fun=snake.up_direction)
+    screen.onkeypress(key="Down", fun=snake.down_direction)
+    screen.onkeypress(key="Left", fun=snake.left_direction)
+    screen.onkeypress(key="Right", fun=snake.right_direction)
+
     while True:
-        time.sleep(SNAKE_SPEED)
+        time.sleep(REFRESH_SPEED)
         snake.move_forward()
         screen.update()
 
