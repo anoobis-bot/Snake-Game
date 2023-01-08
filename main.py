@@ -15,7 +15,7 @@ screen.tracer(0)
 
 REFRESH_SPEED = 0.1
 
-EAT_DIST_THRESHOLD = 15
+COLLISION_DIST_THRESHOLD = 15
 
 
 def main():
@@ -31,12 +31,18 @@ def main():
     screen.onkeypress(key="Left", fun=snake.left_direction)
     screen.onkeypress(key="Right", fun=snake.right_direction)
 
-    while True:
+    game_over = False
+    while not game_over:
         time.sleep(REFRESH_SPEED)
 
         snake.move_forward()
-        if snake.snake_head.distance(food) < EAT_DIST_THRESHOLD:
+        if snake.snake_head.distance(food) < COLLISION_DIST_THRESHOLD:
             snake.eat_food(food, scoreboard)
+
+        if abs(snake.snake_head.xcor()) > (SCREEN_WIDTH / 2) - COLLISION_DIST_THRESHOLD or \
+                abs(snake.snake_head.ycor()) > (SCREEN_WIDTH / 2) - COLLISION_DIST_THRESHOLD:
+            game_over = True
+            scoreboard.display_game_over()
 
         screen.update()
 

@@ -23,3 +23,8 @@ class ScoreBoard(Turtle):
         self.clear()
         self.write(arg=f"Score: {score}", move=False, align="center",
                    font=("Arial", int(BOARD_HEIGHT / 2), "normal"))
+
+    def display_game_over(self):
+        self.goto(0, 0)
+        self.write(arg="GAME OVER", move=False, align="center",
+                   font=("Arial", int(BOARD_HEIGHT / 2), "normal"))
