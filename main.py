@@ -2,6 +2,7 @@ import time
 from turtle import Screen
 from snake import Snake
 from food import Food
+from scoreboard import ScoreBoard
 
 # Initializing screen
 SCREEN_HEIGHT = 600
@@ -21,6 +22,7 @@ def main():
 
     snake = Snake()
     food = Food(screen_size_width=SCREEN_WIDTH, screen_size_height=SCREEN_HEIGHT)
+    scoreboard = ScoreBoard(screen_height=SCREEN_HEIGHT)
     screen.update()
 
     screen.listen()
@@ -34,7 +36,7 @@ def main():
 
         snake.move_forward()
         if snake.snake_head.distance(food) < EAT_DIST_THRESHOLD:
-            food.new_location()
+            snake.eat_food(food, scoreboard)
 
         screen.update()
 

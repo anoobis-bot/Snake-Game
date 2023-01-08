@@ -36,6 +36,10 @@ class Snake:
             self.snake_body.append(curr_section)
         self.snake_head = self.snake_body[0]
 
+    def eat_food(self, food, scoreboard):
+        food.new_location()
+        scoreboard.add_score()
+
     def add_section(self):
         new_section = create_section()
 

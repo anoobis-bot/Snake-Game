@@ -3,7 +3,7 @@ import random
 
 FOOD_SIZE_SCALE = 0.5
 
-TURTLE_SIZE = 20
+SIDES_SPAWN_PAD = 40
 
 random.seed()
 
@@ -22,8 +22,8 @@ class Food(Turtle):
         self.new_location()
 
     def new_location(self):
-        x_max_abs = int(self.screen_width / 2 - (TURTLE_SIZE / 2))
-        y_max_abs = int(self.screen_height / 2 - (TURTLE_SIZE / 2))
+        x_max_abs = int(self.screen_width / 2 - (SIDES_SPAWN_PAD / 2))
+        y_max_abs = int(self.screen_height / 2 - (SIDES_SPAWN_PAD / 2))
         x_coordinate = random.randint(-x_max_abs, x_max_abs)
         y_coordinate = random.randint(-y_max_abs, y_max_abs)
         self.goto(x=x_coordinate, y=y_coordinate)
