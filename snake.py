@@ -14,6 +14,7 @@ SOUTH_HEAD = 270
 def create_section():
     new_section = Turtle(shape="square")
     new_section.color("white")
+    new_section.penup()
     return new_section
 
 
@@ -39,12 +40,14 @@ class Snake:
     def eat_food(self, food, scoreboard):
         food.new_location()
         scoreboard.add_score()
+        self.add_section()
 
     def add_section(self):
         new_section = create_section()
-
         tail_end_section = self.snake_body[len(self.snake_body) - 1]
         new_section.goto(x=tail_end_section.xcor(), y=tail_end_section.ycor())
+
+        self.snake_body.append(new_section)
 
     def move_forward(self):
         for section_index in range(len(self.snake_body) - 1, 0, -1):
