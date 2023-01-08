@@ -1,6 +1,7 @@
 import time
 from turtle import Screen
 from snake import Snake
+from food import Food
 
 # Initializing screen
 SCREEN_HEIGHT = 600
@@ -13,10 +14,13 @@ screen.tracer(0)
 
 REFRESH_SPEED = 0.1
 
+EAT_DIST_THRESHOLD = 15
+
 
 def main():
 
     snake = Snake()
+    food = Food(screen_size_width=SCREEN_WIDTH, screen_size_height=SCREEN_HEIGHT)
     screen.update()
 
     screen.listen()
@@ -27,7 +31,11 @@ def main():
 
     while True:
         time.sleep(REFRESH_SPEED)
+
         snake.move_forward()
+        if snake.snake_head.distance(food) < EAT_DIST_THRESHOLD:
+            food.new_location()
+
         screen.update()
 
     screen.mainloop()
