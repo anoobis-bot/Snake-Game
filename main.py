@@ -44,10 +44,8 @@ def main():
             game_over = True
             scoreboard.display_game_over()
 
-        for segment in snake.snake_body:
-            if segment == snake.snake_head:
-                pass
-            elif snake.snake_head.distance(segment) < COLLISION_DIST_THRESHOLD:
+        for segment in snake.snake_body[1:]:
+            if snake.snake_head.distance(segment) < COLLISION_DIST_THRESHOLD:
                 game_over = True
                 scoreboard.display_game_over()
 
