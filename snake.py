@@ -26,13 +26,20 @@ class Snake:
         # The snake initially points at east (heading == 0)
 
         self.snake_body = []
+        self.snake_head = None
+        self.init_snake()
+
+    def init_snake(self):
         for section_num in range(STARTING_NUM_SECTIONS):
             curr_section = create_section()
 
             curr_section.penup()
 
-            x_offset = SECTION_PIXEL_SIZE * len(self.snake_body)
-            curr_section.backward(x_offset)
+            if section_num == 0:
+                curr_section.goto(0,0)
+            else:
+                x_offset = SECTION_PIXEL_SIZE * len(self.snake_body)
+                curr_section.backward(x_offset)
 
             self.snake_body.append(curr_section)
         self.snake_head = self.snake_body[0]
@@ -71,3 +78,9 @@ class Snake:
     def right_direction(self):
         if self.snake_head.heading() != WEST_HEAD:
             self.snake_head.setheading(EAST_HEAD)
+
+    def reset_snake(self):
+        for section in self.snake_body:
+            section.hideturtle()
+        self.snake_body.clear()
+        self.init_snake()

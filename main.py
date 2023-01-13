@@ -18,6 +18,11 @@ REFRESH_SPEED = 0.1
 COLLISION_DIST_THRESHOLD = 15
 
 
+def reset_game(snake, scoreboard):
+    snake.reset_snake()
+    scoreboard.reset_game()
+
+
 def main():
 
     snake = Snake()
@@ -41,13 +46,11 @@ def main():
 
         if abs(snake.snake_head.xcor()) > (SCREEN_WIDTH / 2) - COLLISION_DIST_THRESHOLD or \
                 abs(snake.snake_head.ycor()) > (SCREEN_WIDTH / 2) - COLLISION_DIST_THRESHOLD:
-            game_over = True
-            scoreboard.display_game_over()
+            reset_game(snake, scoreboard)
 
         for segment in snake.snake_body[1:]:
             if snake.snake_head.distance(segment) < COLLISION_DIST_THRESHOLD:
-                game_over = True
-                scoreboard.display_game_over()
+                reset_game(snake, scoreboard)
 
         screen.update()
 
