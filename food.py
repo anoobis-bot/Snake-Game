@@ -22,6 +22,7 @@ class Food(Turtle):
         self.new_location()
 
     def new_location(self):
+        """Moves the food at random location on the screen"""
         x_max_abs = int(self.screen_width / 2 - (SIDES_SPAWN_PAD / 2))
         y_max_abs = int(self.screen_height / 2 - (SIDES_SPAWN_PAD / 2))
         x_coordinate = random.randint(-x_max_abs, x_max_abs)
