@@ -74,22 +74,22 @@ class Snake:
         self.snake_head.forward(SECTION_PIXEL_SIZE)
 
     def up_direction(self):
-        """Makes the snake head turn upward"""
+        """Makes the snake turn upward"""
         if self.snake_head.heading() != SOUTH_HEAD:
             self.snake_head.setheading(NORTH_HEAD)
 
     def down_direction(self):
-        """Makes the snake head turn downward"""
+        """Makes the snake turn downward"""
         if self.snake_head.heading() != NORTH_HEAD:
             self.snake_head.setheading(SOUTH_HEAD)
 
     def left_direction(self):
-        """Makes the snake head turn left"""
+        """Makes the snake turn left"""
         if self.snake_head.heading() != EAST_HEAD:
             self.snake_head.setheading(WEST_HEAD)
 
     def right_direction(self):
-        """Makes the snake head turn right"""
+        """Makes the snake turn right"""
         if self.snake_head.heading() != WEST_HEAD:
             self.snake_head.setheading(EAST_HEAD)
 

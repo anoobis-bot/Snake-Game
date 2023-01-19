@@ -1,8 +1,10 @@
 from turtle import Turtle
 import random
 
+# Shrink turtle size
 FOOD_SIZE_SCALE = 0.5
 
+# Prevents the food object spawn at the edges most part of the screen
 SIDES_SPAWN_PAD = 40
 
 random.seed()
@@ -17,6 +19,7 @@ class Food(Turtle):
         self.speed("fastest")
         self.shapesize(stretch_wid=FOOD_SIZE_SCALE, stretch_len=FOOD_SIZE_SCALE)
 
+        # new location method uses the information of screen width and height to place the food at a new location
         self.screen_width = screen_size_width
         self.screen_height = screen_size_height
         self.new_location()
